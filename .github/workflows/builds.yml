@@ -50,7 +50,7 @@ jobs:
 
       # Linux Containers projects
       INCUS_TAG: "main"
-      INCUS_UI_CANONICAL_TAG: "0.12"
+      INCUS_UI_CANONICAL_TAG: "0.13"
       LXCFS_TAG: "v6.0.2"
       LXC_TAG: "v6.0.2"
 
