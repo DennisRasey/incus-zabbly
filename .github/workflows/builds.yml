@@ -483,6 +483,7 @@ jobs:
           git rm UnitTestFrameworkPkg/Library/GoogleTestLib/googletest
           git rm UnitTestFrameworkPkg/Library/SubhookLib/subhook
           git rm UnitTestFrameworkPkg/Library/CmockaLib/cmocka
+          git submodule init
           git submodule update
 
           EDK2_ARCH="X64"
