@@ -226,7 +226,7 @@ jobs:
           git clone https://github.com/opencontainers/umoci /build/umoci --depth 1 -b "${UMOCI_TAG}"
           git clone https://github.com/stefanberger/libtpms /build/libtpms --depth 1 -b "${LIBTPMS_TAG}"
           git clone https://github.com/stefanberger/swtpm /build/swtpm --depth 1 -b "${SWTPM_TAG}"
-          git clone https://github.com/tianocore/edk2 /build/edk2 --shallow-submodules --depth 1 -b "${EDK2_TAG}"
+          git clone https://github.com/tianocore/edk2 /build/edk2 --recurse-submodules --shallow-submodules --depth 1 -b "${EDK2_TAG}"
           git clone https://gitlab.com/qemu-project/qemu /build/qemu --depth 1 -b "${QEMU_TAG}"
           git clone https://gitlab.com/qemu-project/seabios /build/seabios --depth 1 -b "${SEABIOS_TAG}"
           git clone https://gitlab.com/virtio-fs/virtiofsd /build/virtiofsd --depth 1 -b "${VIRTIOFSD_TAG}"
@@ -478,13 +478,6 @@ jobs:
           patch -p1 < "${REPO}/patches/edk2-0004-gcc-errors.patch"
           patch -p1 < "${REPO}/patches/edk2-0005-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.patch"
           patch -p1 < "${REPO}/patches/edk2-0006-disable-EFI-memory-attributes-protocol.patch"
-
-          # Workaround for broken git submodules
-          git rm UnitTestFrameworkPkg/Library/GoogleTestLib/googletest
-          git rm UnitTestFrameworkPkg/Library/SubhookLib/subhook
-          git rm UnitTestFrameworkPkg/Library/CmockaLib/cmocka
-          git submodule init
-          git submodule update
 
           EDK2_ARCH="X64"
           EDK2_PKG="OvmfPkg/OvmfPkgX64.dsc"
